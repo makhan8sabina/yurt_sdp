@@ -1,5 +1,3 @@
-package yurtbuilder;
-
 public class YurtDirector {
 
     public Yurt constructNomadicYurt(YurtBuilder builder) {
