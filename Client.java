@@ -3,41 +3,30 @@ public class Client {
     public static void main(String[] args) {
         YurtDirector director = new YurtDirector();
 
-        Yurt nomadicYurt = director.constructTraditionalNomadicYurt(new ConcreteYurtBuilder());
-        System.out.println("Traditional nomadic yurt:");
-        System.out.println(nomadicYurt);
+        Yurt nomadic = director.constructNomadicYurt(new YurtBuilder());
+        System.out.println(nomadic);
 
-        Yurt touristYurt = director.constructTouristGlampingYurt(new ConcreteYurtBuilder());
-        System.out.println("\nTourist glamping yurt:");
-        System.out.println(touristYurt);
+        Yurt tourist = director.constructTouristYurt(new YurtBuilder());
+        System.out.println(tourist);
 
-        Yurt ceremonialYurt = director.constructCeremonialWeddingYurt(new ConcreteYurtBuilder());
-        System.out.println("\nCeremonial wedding yurt:");
-        System.out.println(ceremonialYurt);
-
-        Yurt exhibitionYurt=new ConcreteYurtBuilder()
-                .setFrameType(YurtConstants.FRAME_STEEL_COLLAPSIBLE)
+        Yurt custom = new YurtBuilder()
+                .setFrameType("steel frame")
                 .setDiameter(8)
-                .setCovering(YurtConstants.COVERING_CANVAS)
-                .setDoorDirection(YurtConstants.DOOR_GLASS)
+                .setCovering("canvas")
                 .installStove(false)
-                .addDecoration("museum information plaques")
-                .addDecoration("LED accent lighting")
-                .setPurpose(YurtPurpose.EXHIBITION)
+                .setPurpose("CEREMONIAL")
                 .build();
-        System.out.println("\nCustom exhibition yurt:");
-        System.out.println(exhibitionYurt);
+        System.out.println(custom);
 
-        System.out.println("\nAttempting to build an invalid yurt (diameter too large):");
         try {
-            new ConcreteYurtBuilder()
-                    .setFrameType(YurtConstants.FRAME_WOODEN_LATTICE)
+            new YurtBuilder()
+                    .setFrameType("wooden lattice frame")
                     .setDiameter(50)
-                    .setCovering(YurtConstants.COVERING_FELT)
-                    .setPurpose(YurtPurpose.NOMADIC)
+                    .setCovering("felt")
+                    .setPurpose("NOMADIC")
                     .build();
         } catch (IllegalStateException e) {
-            System.out.println("Rejected as expected: " + e.getMessage());
+            System.out.println("Rejected: " + e.getMessage());
         }
     }
 }
