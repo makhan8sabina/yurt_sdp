@@ -1,62 +1,23 @@
-import java.util.Collections;
-import java.util.List;
-
 public final class Yurt {
 
     private final String frameType;
-    private final int diameterMeters;
-    private final String coveringMaterial;
-    private final String doorDirection;
-    private final boolean has_stove;
-    private final List<String> decorations;
-    private final YurtPurpose purpose;
+    private final int diameter;
+    private final String covering;
+    private final boolean hasStove;
+    private final String purpose;
 
-    Yurt(String frameType,
-         int diameterMeters,
-         String coveringMaterial,
-         String doorDirection,
-         boolean has_stove,
-         List<String> decorations,
-         YurtPurpose purpose){
-        this.frameType=frameType;
-        this.diameterMeters=diameterMeters;
-        this.coveringMaterial=coveringMaterial;
-        this.doorDirection=doorDirection;
-        this.has_stove=has_stove;
-        this.decorations=Collections.unmodifiableList(decorations);
-        this.purpose=purpose;
+    Yurt(String frameType, int diameter, String covering, boolean hasStove, String purpose) {
+        this.frameType = frameType;
+        this.diameter = diameter;
+        this.covering = covering;
+        this.hasStove = hasStove;
+        this.purpose = purpose;
     }
-    public String getFrameType() {
-        return frameType;
-    }
-    public int getDiameterMeters(){
-        return diameterMeters;
-    }
-    public String getCoveringMaterial(){
-        return coveringMaterial;
-    }
-    public String getDoorDirection(){
-        return doorDirection;
-    }
-    public boolean hasStove(){
-        return has_stove;
-    }
-    public List<String> getDecorations(){
-        return decorations;
-    }
-    public YurtPurpose getPurpose(){
-        return purpose;
-    }
+
     @Override
-    public String toString(){
-        return "Yurt{" +
-                "purpose=" + purpose +
-                ", frameType='" + frameType + '\'' +
-                ", diameterMeters=" + diameterMeters +
-                ", coveringMaterial='" + coveringMaterial + '\'' +
-                ", doorDirection='" + doorDirection + '\'' +
-                ", has_stove=" + has_stove +
-                ", decorations=" + decorations +
-                '}';
+    public String toString() {
+        return "Yurt{frame=" + frameType + ", diameter=" + diameter
+                + "m, covering=" + covering + ", stove=" + hasStove
+                + ", purpose=" + purpose + "}";
     }
 }
